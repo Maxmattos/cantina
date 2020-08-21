@@ -1,0 +1,66 @@
+<script>
+function AddProduto(){
+    const areaProdutos = document.getElementById("produtos")
+    const div = document.createElement("div")
+    const produto = document.createElement("input")
+    const valor = document.createElement("input")
+
+    produto.className = "produto"
+    produto.placeholder = "Digite o produto"
+    valor.className = "valor"
+    valor.placeholder = "R$ 0,00"
+
+    div.append(produto,valor)
+    areaProdutos.append(div)
+}
+
+function ExibirCarrinho(){
+    const carrinho = document.getElementById('carrinho')
+    const produtos = document.getElementsByClassName('produto')        
+    const valores = document.getElementsByClassName('valor')        
+
+    const contador = produtos.length
+    let totalPedido = 0
+    let valorAtual = 0
+    let i = 0
+    let pedidosCarrinho = `
+        <hr>
+        <b>Carrinho</b>
+        <br><br>
+    `
+    while (i < contador) {     
+
+        valorAtual = valores[i].value.replace(",",".")
+        totalPedido = totalPedido + parseFloat(valorAtual)
+        pedidosCarrinho = pedidosCarrinho + `<b>Produto:</b> ${produtos[i].value} - <b>Valor:</b> R$${valores[i].value}` + '<br>'
+        carrinho.innerHTML = pedidosCarrinho
+        i++
+    }
+
+    if (isNaN(totalPedido)) {
+        alert('Produto vazio ou valor inválido! Verifique')
+    }
+    else if (totalPedido <= 0) {
+        alert('Valor deve ser maior que zero!')
+    }
+    else {
+        pedidosCarrinho = pedidosCarrinho + '<hr> <br>'
+        pedidosCarrinho = pedidosCarrinho + `<b>Total do Pedido:</b> R$${totalPedido.toFixed(2)}`
+        carrinho.innerHTML = pedidosCarrinho    
+        carrinho.style.display = 'block'    
+    }
+}
+
+</script>
+<button id="addProduto" onclick="AddProduto()">Adicionar Produto</button>
+<br>
+<br>
+<div id="produtos">
+    <input class="produto" type="text" placeholder="Digite o produto"><input class="valor" type="text" placeholder="R$ 0,00">
+</div>
+<br>
+<br>
+<button id="fecharProduto" onclick="ExibirCarrinho()">Fechar Pedido</button>
+<br>
+<br>
+<div id="carrinho" style="display: none;"></div>

@@ -1,0 +1,13 @@
+.modal, .modal-dialog, .modal-content {
+  width: 100%;
+}
+
+.pedido-modal {
+  height: 600px;
+  width: 900px;
+  margin-left: -150px;
+}
+
+.qnt-produto {
+  width: 50px;
+}
