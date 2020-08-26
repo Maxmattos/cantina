@@ -4,6 +4,7 @@
 -- OS do Servidor:               Win32
 -- HeidiSQL Versão:              11.0.0.5919
 -- --------------------------------------------------------
+-- Banco de dados criado por Max Souza
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
